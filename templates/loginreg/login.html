@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layatech Pvt Ltd - Login</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                    url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31') no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+    }
+    .login-container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .login-box {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.8);
+        width: 350px;
+        text-align: center;
+    }
+    .login-box h1 {
+        margin-bottom: 10px;
+        font-size: 28px;
+        color: #00d9ff;
+    }
+    .login-box p {
+        font-size: 14px;
+        margin-bottom: 30px;
+        color: #ccc;
+    }
+    .login-box input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        font-size: 14px;
+    }
+    .login-box button {
+        background: #00d9ff;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        border-radius: 8px;
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .login-box button:hover {
+        background: #00aacc;
+    }
+    .services {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #aaa;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-box">
+        <h1>Layatech Pvt Ltd</h1>
+        <p>Cloud | Server | Networking | SOC | NOC | App Support</p>
+        
+        <form id="loginForm">
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="services">
+            © 2025 Layatech Pvt Ltd. All Rights Reserved.
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        // Simple authentication placeholder
+        let username = document.querySelector("[name='username']").value;
+        let password = document.querySelector("[name='password']").value;
+
+        if(username === "admin" && password === "admin123"){
+            window.location.href = "../helpdesk/Manager/index.html";
+        } else {
+            alert("Invalid Username or Password");
+        }
+    });
+</script>
+
+</body>
+</html>

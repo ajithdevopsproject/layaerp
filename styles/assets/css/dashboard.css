@@ -1,0 +1,450 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+}
+
+/* Top Header */
+.top-header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 60px;
+}
+
+.mobile-menu-toggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    display: none;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.logo img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-icon {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.25rem;
+    transition: all 0.3s;
+    position: relative;
+    cursor: pointer;
+}
+
+.header-icon:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Compact Sidebar */
+.compact-sidebar {
+    background-color: var(--dark-color);
+    color: white;
+    width: 80px;
+    height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    transition: all 0.3s;
+    z-index: 1020;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.compact-nav {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.compact-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 0;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: center;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+}
+
+.compact-nav-item:hover, 
+.compact-nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-left: 3px solid var(--primary-color);
+}
+
+.compact-nav-item.active {
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+.compact-nav-icon {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.compact-nav-item span {
+    font-size: 0.65rem;
+    display: block;
+    text-align: center;
+}
+
+/* Advanced Menu */
+.advanced-sidebar {
+    background-color: #2c3e50;
+    color: white;
+    width: 180px;
+    height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: -220px;
+    transition: all 0.3s;
+    z-index: 1010;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.advanced-sidebar.show {
+    left: 80px;
+}
+
+.text-muted.colore {
+    color: white !important;
+}
+
+.advanced-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.50rem 1rem;
+    color: white !important;
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.advanced-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white !important;
+    border-left: 3px solid var(--accent-color);
+}
+
+.advanced-menu-item i {
+    margin-right: 1rem;
+    font-size: 0.8rem;
+}
+
+/* Message Window */
+.message-window {
+    background-color: white;
+    width: 350px;
+    max-height: 500px;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    transition: all 0.3s;
+    z-index: 1050;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+}
+
+.message-window.show {
+    display: block;
+}
+
+.message-header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-body {
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.message-item {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s;
+}
+
+.message-item:hover {
+    background-color: #f9f9f9;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+}
+
+.message-content {
+    flex: 1;
+}
+
+.message-sender {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.message-preview {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 80px;
+    margin-top: 60px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    min-height: calc(100vh - 60px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 60px;
+    left: -280px;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background-color: var(--dark-color);
+    color: white;
+    padding: 1rem;
+    transition: all 0.3s;
+    z-index: 1050;
+    overflow-y: auto;
+    display: none;
+}
+
+.mobile-menu-overlay.show {
+    left: 0;
+    display: block;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 1rem;
+}
+
+
+.mobile-menu-section {
+    margin-bottom: 1.5rem;
+}
+
+.mobile-menu-section h6 {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.mobile-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-item:hover {
+    color: white;
+    padding-left: 1rem;
+}
+
+.mobile-menu-item i {
+    margin-right: 1rem;
+    font-size: 1rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Profile Dropdown Styles */
+.user-profile {
+    position: relative;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    margin-top: 10px;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+    color: var(--secondary-color);
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
+}
+
+.dropdown-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-divider {
+    margin: 0.5rem 0;
+}
+
+.user-avatar.dropdown-toggle {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.user-avatar.dropdown-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Show dropdown when clicked */
+.show > .user-avatar.dropdown-toggle {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .compact-sidebar {
+        left: -80px;
+    }
+    
+    .advanced-sidebar {
+        left: -220px;
+    }
+    
+    .advanced-sidebar.show {
+        left: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        order: 1;
+    }
+    
+    .logo {
+        order: 2;
+        margin: 0 auto;
+        flex-grow: 1;
+        justify-content: center;
+    }
+    
+    .header-right {
+        order: 3;
+    }
+    
+    .message-window {
+        width: 300px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .message-window {
+        width: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .message-window {
+        width: 90%;
+        left: 5%;
+        right: auto;
+    }
+    
+    .header-right {
+        gap: 0.5rem;
+    }
+    
+    .header-icon {
+        font-size: 1rem;
+    }
+    
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+}

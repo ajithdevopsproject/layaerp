@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laya Helpdesk</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="../../../styles/assets/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="bi bi-list"></i>
+        </button>
+        
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        
+        <div class="header-right">
+            <!-- Digital Clock with AM/PM - Hidden on mobile -->
+            <div class="header-icon me-2 d-none d-md-block" id="digitalClock" data-bs-toggle="tooltip" title="Current Time">
+                <i class="bi bi-clock me-1"></i>
+                <span id="clockDisplay">00:00:00 AM</span>
+            </div>
+            
+            <!-- New Project Button -->
+            <a href="#" class="header-icon me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="New Project">
+                <i class="bi bi-folder-plus"></i>
+            </a>
+            
+            <!-- New Ticket Button -->
+            <a href="#" class="header-icon me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="New Ticket">
+                <i class="bi bi-plus-circle"></i>
+            </a>
+            
+            <!-- Pending Approvals -->
+            <div class="header-icon me-2" id="approvalsButton" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pending Approvals">
+                <i class="bi bi-clipboard-check"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                    3
+                </span>
+            </div>
+            
+            <!-- Notifications -->
+            <div class="header-icon me-2" id="notificationButton" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notifications">
+                <i class="bi bi-bell"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    2
+                </span>
+            </div>
+            
+            <!-- User Profile -->
+            <div class="user-profile dropdown">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="user-avatar dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Message Window -->
+    <div class="message-window" id="messageWindow">
+        <div class="message-header">
+            <h6 class="mb-0">Messages (1)</h6>
+            <button class="btn btn-sm btn-light" id="closeMessageWindow">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div class="message-body">
+            <div class="message-item">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="message-avatar">
+                <div class="message-content">
+                    <div class="message-sender">Sarah Johnson</div>
+                    <div class="message-preview">Hey, can you check the latest report...</div>
+                    <div class="message-time">10 min ago</div>
+                </div>
+            </div>
+            
+            <div class="message-item">
+                <img src="https://randomuser.me/api/portraits/men/22.jpg" class="message-avatar">
+                <div class="message-content">
+                    <div class="message-sender">Michael Chen</div>
+                    <div class="message-preview">The project deadline has been moved...</div>
+                    <div class="message-time">1 hour ago</div>
+                </div>
+            </div>
+            
+            <div class="message-item">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="message-avatar">
+                <div class="message-content">
+                    <div class="message-sender">Emily Wilson</div>
+                    <div class="message-preview">Please approve the budget for Q3...</div>
+                    <div class="message-time">3 hours ago</div>
+                </div>
+            </div>
+            
+            <div class="message-item">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" class="message-avatar">
+                <div class="message-content">
+                    <div class="message-sender">David Kim</div>
+                    <div class="message-preview">The server maintenance is scheduled...</div>
+                    <div class="message-time">Yesterday</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compact Sidebar -->
+    <div class="compact-sidebar" id="sidebar">
+        <nav class="compact-nav">
+            <a href="index.html" class="compact-nav-item">
+                <i class="bi bi-speedometer2 compact-nav-icon"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="downcall.html" class="compact-nav-item active">
+                <i class="bi bi-ticket-detailed compact-nav-icon"></i>
+                <span>Down call</span>
+            </a>
+            
+            <a href="project.html" class="compact-nav-item">
+                <i class="bi-clipboard-check compact-nav-icon"></i>
+                <span>Projects</span>
+            </a>
+            
+            <a href="engineer.html" class="compact-nav-item">
+                <i class="bi-person-badge compact-nav-icon"></i>
+                <span>AMC</span>
+            </a>
+            
+            <a href="team.html" class="compact-nav-item">
+                <i class="bi-people-fill compact-nav-icon"></i>
+                <span>Team</span>
+            </a>
+            
+            <a href="todo.html" class="compact-nav-item">
+                <i class="bi-list-check compact-nav-icon"></i>
+                <span>Todo</span>
+            </a>
+            
+            <!-- More Button - Shows advanced menu -->
+            <a class="compact-nav-item" id="moreMenuButton">
+                <i class="bi bi-three-dots compact-nav-icon"></i>
+                <span>More</span>
+            </a>
+        </nav>
+    </div>
+    
+    <!-- Advanced Menu -->
+    <div class="advanced-sidebar" id="advancedSidebar">
+        <div class="mb-2 px-3">
+            <small class="text-muted colore">ADVANCED MENU</small>
+        </div>
+        
+        <a href="asset.html" class="advanced-menu-item">
+            <i class="bi-box-seam"></i> <span>Asset</span> 
+        </a>
+        <a href="report.html" class="advanced-menu-item">
+            <i class="bi-file-earmark-bar-graph"></i> <span>Reports</span> 
+        </a>
+        <a href="projectexpans.html" class="advanced-menu-item">
+            <i class="bi bi-cart3"></i> <span>Expenses</span> 
+        </a>
+        <a href="advanced.html" class="advanced-menu-item">
+            <i class="bi-tools"></i> <span>Setting</span>
+        </a>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">        
+    <div class="mobile-menu-section">
+        <h6>MAIN MENU</h6>
+        <a href="index.html" class="mobile-menu-item">
+            <i class="bi bi-speedometer2"></i> <span>Dashboard</span>
+        </a>
+        <a href="downcall.html" class="mobile-menu-item">
+            <i class="bi bi-ticket-detailed"></i> <span>Down call</span>
+        </a>
+        <a href="project.html" class="mobile-menu-item">
+            <i class="bi-clipboard-check"></i> <span>Project</span>
+        </a>
+        <a href="amc.html" class="mobile-menu-item">
+            <i class="bi-person-badge"></i> <span>AMC</span>
+        </a>
+        <a href="team.html" class="mobile-menu-item">
+            <i class="bi-people-fill"></i> <span>Teams</span>
+        </a>
+        <a href="todo.html" class="mobile-menu-item">
+            <i class="bi-list-check"></i> <span>Todo</span>
+        </a>
+    </div>
+    
+    <div class="mobile-menu-section">
+        <h6>ADVANCED MENU</h6>
+        <a href="asset.html" class="mobile-menu-item">
+            <i class="bi-box-seam"></i> <span>Asset</span>
+        </a>
+        <a href="report.html" class="mobile-menu-item">
+            <i class="bi-file-earmark-bar-graph"></i> <span>Reports</span>
+        </a>    
+        <a href="projectexpans.html" class="mobile-menu-item">
+            <i class="bi bi-cart3"></i> <span>Expenses</span>
+        </a>
+        <a href="advanced.html" class="mobile-menu-item">
+            <i class="bi-tools"></i> <span>Setting</span>
+        </a>
+    </div>
+</div>
+    
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0">Dashboard Overview</h4>
+            <button type="button" class="btn btn-outline-primary">
+                New Ticket
+            </button>
+        </div>
+        
+		
+		<div class="downcall-card">
+    <div class="downcall-card-header">
+        <h3 class="downcall-card-title">Server Downtime Incident</h3>
+        <span class="downcall-card-status status-critical">Critical</span>
+    </div>
+    <div class="downcall-card-body">
+        <div class="downcall-meta">
+            <div class="downcall-meta-item">
+                <i class="bi bi-calendar"></i> 15 Jun 2023, 14:30
+            </div>
+            <div class="downcall-meta-item">
+                <i class="bi bi-clock-history"></i> 2h 15m
+            </div>
+            <div class="downcall-meta-item">
+                <i class="bi bi-tag"></i> Server Maintenance
+            </div>
+        </div>
+        <p class="downcall-description">
+            Primary production server went down unexpectedly during peak hours. 
+            Initial diagnostics suggest hardware failure in the RAID controller.
+            Emergency maintenance team dispatched.
+        </p>
+    </div>
+    <div class="downcall-card-footer">
+        <div class="downcall-assignee">
+            <img src="path/to/avatar.jpg" class="downcall-assignee-avatar" alt="Assignee">
+            <div>
+                <div class="assignee-name">John Smith</div>
+                <small class="text-muted">Senior Engineer</small>
+            </div>
+        </div>
+        <div class="downcall-actions">
+            <button class="btn btn-sm btn-primary me-2">View Details</button>
+            <button class="btn btn-sm btn-outline-secondary">Add Note</button>
+        </div>
+    </div>
+</div>
+		
+		
+        <div class="row">
+		<div class="col-md-6 col-lg-3 mb-4"> 
+				<div class="card card-success card-hover-success">
+					<div class="card-header">Success Card</div>
+						<div class="card-body">
+							<h5 class="card-title">Professional Design</h5>
+							<p class="card-text">This card shows successful operations</p>
+							<div class="bg-primary bg-opacity-10 p-3 rounded">
+                                <i class="bi bi-ticket-detailed text-primary fs-4"></i>
+                        </div>
+						</div>
+						
+				</div>
+				
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-2">Open Tickets</h6>
+                                <h3 class="mb-0">24</h3>
+                            </div>
+                            <div class="bg-primary bg-opacity-10 p-3 rounded">
+                                <i class="bi bi-ticket-detailed text-primary fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-2">Active Projects</h6>
+                                <h3 class="mb-0">8</h3>
+                            </div>
+                            <div class="bg-success bg-opacity-10 p-3 rounded">
+                                <i class="bi bi-clipboard-check text-success fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-2">Pending Approvals</h6>
+                                <h3 class="mb-0">3</h3>
+                            </div>
+                            <div class="bg-warning bg-opacity-10 p-3 rounded">
+                                <i class="bi bi-clipboard-data text-warning fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-2">Team Members</h6>
+                                <h3 class="mb-0">12</h3>
+                            </div>
+                            <div class="bg-info bg-opacity-10 p-3 rounded">
+                                <i class="bi bi-people-fill text-info fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Recent Tickets</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Subject</th>
+                                        <th>Status</th>
+                                        <th>Priority</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#1254</td>
+                                        <td>Server maintenance required</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td><span class="badge bg-danger">High</span></td>
+                                        <td>2 hours ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1253</td>
+                                        <td>Email configuration issue</td>
+                                        <td><span class="badge bg-success">Resolved</span></td>
+                                        <td><span class="badge bg-secondary">Low</span></td>
+                                        <td>1 day ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1252</td>
+                                        <td>Database backup failed</td>
+                                        <td><span class="badge bg-info">In Progress</span></td>
+                                        <td><span class="badge bg-danger">High</span></td>
+                                        <td>1 day ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1251</td>
+                                        <td>New user account request</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td><span class="badge bg-primary">Medium</span></td>
+                                        <td>2 days ago</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">Activity Timeline</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-timeline">
+                            <div class="activity-item">
+                                <div class="activity-badge">
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <small class="text-muted">10 minutes ago</small>
+                                    <p>Ticket #1253 marked as resolved by John Doe</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-badge">
+                                    <i class="bi bi-file-earmark-text-fill text-primary"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <small class="text-muted">1 hour ago</small>
+                                    <p>New ticket #1254 created by Sarah Smith</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-badge">
+                                    <i class="bi bi-person-plus-fill text-info"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <small class="text-muted">3 hours ago</small>
+                                    <p>New team member Michael Chen added</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-badge">
+                                    <i class="bi bi-clipboard-check-fill text-warning"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <small class="text-muted">5 hours ago</small>
+                                    <p>Project "Website Redesign" approved</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Custom JS -->
+    <script src="../../../styles/assets/js/dashboard.js"></script>
+</body>
+</html>
