@@ -1,0 +1,3 @@
+[submodule "layaerp"]
+    path = layaerp
+    url = https://github.com/ajithdevopsproject/layaerp.git
